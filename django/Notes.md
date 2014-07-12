@@ -13,3 +13,4 @@ Django Db router:
      
       In [11]: Entry.objects.using('read_db')
       Out[11]: [<Entry: <Entry:test>>]
+      (Since, already inserted an object before patching db router in read_db)
