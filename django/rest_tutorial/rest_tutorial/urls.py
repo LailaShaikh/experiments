@@ -9,6 +9,7 @@ router = routers.DefaultRouter()
 router.register(r'users', views.UserViewset, base_name='user-detail')
 router.register(r'groups', views.GroupViewset, base_name='group-detail')
 
+
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'rest_tutorial.views.home', name='home'),
@@ -16,5 +17,11 @@ urlpatterns = patterns('',
     
     url(r'^', include(router.urls)),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    
+)
+
+urlpatterns += patterns('rest_app.views',
+    url(r'^snippets/$', 'snippet_list'),
+    url(r'^snippets/(?P<pk>[0-9]+)/$', 'snippet_detail'),
 )
