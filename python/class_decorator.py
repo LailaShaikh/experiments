@@ -14,7 +14,7 @@ class Person(object):
         self.person_name = name
         self.age = age
         
-    #@class_decorator
+    @class_decorator
     def find_citizen_type(self):
         if self.age > 18:
             print "%s is citizen" %(self.person_name)
