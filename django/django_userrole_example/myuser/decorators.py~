@@ -1,0 +1,6 @@
+
+
+def roles_required():
+    '''
+    roles_required decorator
+    '''
