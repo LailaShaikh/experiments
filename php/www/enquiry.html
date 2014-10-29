@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>NextDoor Overseas Traders</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+		<link rel="shortcut icon" href="img/nd.jpg" type="image/x-icon">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/icomoon-social.css">
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,800' rel='stylesheet' type='text/css'>
+
+        <link rel="stylesheet" href="css/leaflet.css" />
+		<!--[if lte IE 8]>
+		    <link rel="stylesheet" href="css/leaflet.ie.css" />
+		<![endif]-->
+		<link rel="stylesheet" href="css/main.css">
+
+        <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+
+		<script type="text/javascript">
+			function validateForm()
+			{
+				var name=document.forms["MyForm"]["name"].value;
+				var email=document.forms["MyForm"]["email"].value;
+				var phone=document.forms["MyForm"]["phone"].value;
+				var msg=document.forms["MyForm"]["message"].value;
+				if (name==null || name=="")
+				{
+				  alert("Please enter your name");
+				  document.getElementById('name').style.border = "1px solid #F00";
+				  document.MyForm.name.focus();
+				  return false;
+				} 
+				else { document.getElementById('name').style.border = "";}
+			
+				if (email==null || email=="")
+				{
+					alert("Please enter your email");
+					document.getElementById('email').style.border = "1px solid #F00";
+					document.MyForm.email.focus();
+					return false;
+				} 
+				else { document.getElementById('email').style.border = "";}
+			
+				if (phone==null || phone=="")
+				{
+					alert("Please enter your phone number");
+					document.getElementById('phone').style.border = "1px solid #F00";
+					document.MyForm.phone.focus();
+					return false;
+				} 
+				else { document.getElementById('phone').style.border = "";}
+			
+				if (msg==null || msg=="")
+				{
+					alert("Please enter your message");
+					document.getElementById('message').style.border = "1px solid #F00";
+					document.MyForm.message.focus();
+					return false;
+				} 
+				else { document.getElementById('message').style.border = "";}
+		  }
+		</script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+        
+
+        <!-- Navigation & Logo-->
+        <div class="mainmenu-wrapper">
+	        <div class="container">
+	        	<div class="menuextras" style="margin-top:-20px;">
+		        </div>
+		        <nav id="mainmenu" class="mainmenu">
+					<ul>
+						<li class="logo-wrapper"><a href="index.html"><img src="img/Nextdoor_Logo.jpg" width="170px" alt="NextDoor Overseas Traders"></a></li>
+						<li>
+							<a href="index.html">Home</a>
+						</li>
+						<li>
+							<a href="about-us.html">About Us</a>
+						</li>
+						<li class="has-submenu">
+							<a href="services.html">Services</a>
+							<div class="mainmenu-submenu">
+								<div class="mainmenu-submenu-inner"> 
+									<div>
+										<h4>International</h4>
+										<ul>
+											<li><a href="import-services.html">Import&nbsp;Services</a></li>
+											<li><a href="export-services.html">Export&nbsp;Services</a></li>
+										</ul>
+										<h4>Domestic</h4>
+										<ul>
+											<li><a href="domestic-services.html">Domestic&nbsp;Services</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="active">
+							<a href="enquiry.html">Enquiry</a>
+						</li>
+						<li>
+							<a href="contact-us.html">Contact Us</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+
+        <!-- Page Title -->
+		<div class="section section-breadcrumbs">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h1>Enquiry Us</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+        
+        <div class="section">
+	    	<div class="container">
+	        	<div class="row">
+	        		<div class="col-sm-8">
+	        			<!-- Contact Form -->
+	        			<h3>Send us a message</h3>
+	        			<div class="contact-form-wrapper">
+		        			<form class="form-horizontal" role="form" name="MyForm" id="MyForm" method="post" action="enquiry.php" onsubmit="return validateForm()">
+		        				<div class="form-group">
+		        				 	<label for="name" class="col-sm-3 control-label"><b>Your Name</b></label>
+		        				 	<div class="col-sm-9">
+										<input class="form-control" id="name" type="text" placeholder="Your Name...">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="email" class="col-sm-3 control-label"><b>Your Email</b></label>
+									<div class="col-sm-9">
+										<input class="form-control" id="email" type="text" placeholder="Email...">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="phone" class="col-sm-3 control-label"><b>Your Phone</b></label>
+									<div class="col-sm-9">
+										<input class="form-control" id="phone" type="text" placeholder="Phone Number...">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="message" class="col-sm-3 control-label"><b>Message</b></label>
+									<div class="col-sm-9">
+										<textarea class="form-control" rows="5" id="message" placeholder="Message..."></textarea>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-12">
+										<button type="submit" class="btn pull-right">Send</button>
+									</div>
+								</div>
+		        			</form>
+		        		</div>
+		        		<!-- End Contact Info -->
+	        		</div>
+	        	</div>
+	    	</div>
+	    </div>
+
+	    <!-- Footer -->
+	    <div class="footer">
+	    	<div class="container">
+		    	<div class="row">
+		    		<div class="col-footer col-md-3 col-xs-6">
+		    			<h3>Navigate</h3>
+		    			<ul class="no-list-style footer-navigate-section">
+		    				<li><a href="services.html">Services</a></li>
+		    				<li><a href="http://www.ebay.in/usr/ndmart">EBay</a></li>
+		    				<li><a href="http://www.snapdeal.com/seller/ndmart/S01407">Snapdeal</a></li>
+		    				<li><a href="http://www.amazon.in/gp/aag/main?ie=UTF8&asin=&isAmazonFulfilled=&isCBA=&marketplaceID=A21TJRUUN4KGV&orderID=&seller=A3IJY44VVSX7ZL">Amazon</a></li>
+		    			</ul>
+		    		</div>
+		    		
+		    		<div class="col-footer col-md-6 col-xs-6">
+		    			<h3>Contacts</h3>
+		    			<p class="contact-us-details">
+	        				<b>Address:</b> 91-D, Narayana Nagar, Municipal School Road, Ward No: 16, Komarapalayam - 638183, Namakkal District, Tamilnadu, India.<br/>
+	        				<b>Mobile:</b> +91 7200562421, 7200562422, 7200563189<br/>
+							<b>Skype ID:</b> nextdoor.overseas<br/>
+	        				<b>Email:</b> <a href="mailto:nextdoor.overseas@gmail.com">nextdoor.overseas@gmail.com</a>
+	        			</p>
+		    		</div>
+		    		<div class="col-footer col-md-3 col-xs-6">
+		    			<h3>Stay Connected</h3>
+		    			<ul class="footer-stay-connected no-list-style">
+		    				<li><a href="https://www.facebook.com/nextdooroverseas" class="facebook"></a></li>
+		    				<li><a href="https://twitter.com/nextdoor_trader" class="twitter"></a></li>
+		    				<li><a href="https://plus.google.com/u/0/105623436196949855368/posts" class="googleplus"></a></li>
+		    			</ul>
+		    		</div>
+		    	</div>
+		    	<div class="row">
+		    		<div class="col-md-12">
+		    			<div class="footer-copyright">&copy; 2014 NextDoor Overseas Traders. All Rights Reserved. </div>
+		    		</div>
+		    	</div>
+		    </div>
+	    </div>
+
+        <!-- Javascripts -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/jquery-1.9.1.min.js"><\/script>')</script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js"></script>
+        <script src="js/jquery.fitvids.js"></script>
+        <script src="js/jquery.sequence-min.js"></script>
+        <script src="js/jquery.bxslider.js"></script>
+        <script src="js/main-menu.js"></script>
+        <script src="js/template.js"></script>
+
+    </body>
+</html>
