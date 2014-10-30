@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+
+    <head>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="x-ua-compatible" content="IE=10">
+
+        <link rel="stylesheet" href="/static/dependencies/bootstrap-3.0.0.min.css">
+        <link rel="stylesheet" href="/static/pick-a-color-1.2.3.min.css">
+
+        <style type="text/css">
+
+            .pick-a-color-markup {
+                margin:20px 0px;
+            }
+
+            .container {
+                margin: 0px 5px;
+                width: 50%;
+            }
+
+        </style>
+
+    </head>
+
+    <body>
+
+        <div class="container">
+            <form action='/s/'>
+            <label>Border Color:</label>
+            <input type="text" value="222" name="border-color" class="pick-a-color form-control">
+            <label>Font Color:</label>
+            <input type="text" value="aaa" name="font-color" class="pick-a-color form-control">
+            <label>Background Color:</label>
+            <input type="text" value="a1beef" name="background-color" class="pick-a-color form-control">
+            <label>highlightter Color:</label>
+            <input type="text" value="551033" name="highlight-color" class="pick-a-color form-control">
+            <label>Title Text Color:</label>
+            <input type="text" value="551033" name="title-color" class="pick-a-color form-control">
+            <label>Description Text Color:</label>
+            <input type="text" value="551033" name="des-color" class="pick-a-color form-control">
+
+            <label>Font:</label>
+            <select name="font" class="form-control">
+            <option value='Arial'>Arial</option>
+            <option value='Times New Roman'>Times New Roman</option>
+            </select>
+            <br>
+
+
+            <button type="button" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+
+    <script src="/static/dependencies/jquery-1.9.1.min.js"></script>
+    <script src="/static/dependencies/tinycolor-0.9.15.min.js"></script>
+    <script src="/static/pick-a-color-1.2.3.min.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $(".pick-a-color").pickAColor({
+              showSpectrum            : true,
+                showSavedColors         : true,
+                saveColorsPerElement    : true,
+                fadeMenuToggle          : true,
+                showAdvanced                        : true,
+                showBasicColors         : true,
+                showHexInput            : true,
+                allowBlank                          : true,
+                inlineDropdown                  : true
+            });
+
+        });
+
+        </script>
+
+    </body>
+
+</html>
