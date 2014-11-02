@@ -1,8 +1,11 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
+from django.conf import settings
 from .models import MyUser, Role
 from .decorators import roles_required
+
+import os
 
 @login_required
 @roles_required('editor', 'admin')
@@ -14,21 +17,17 @@ def generate_css_file(border, font_color, background, highlight,\
                       title_color, des_color, font, filename='test.css',path=''):
     #generate css file for the given params
     wtext = ''
-    if font_color:
-        wtext = '''body {
-                    font-family: "Helvetica Neue",Helvetica,%s,sans-serif;
-                    font-size: 14px;
-                    line-height: 1.42857143;
-                    color: #%s;
-                    background-color: #%s;
-}
-'''
-        wtext =  wtext %(font, font_color, background)
+    if font_color or background or title_color:
+        with open(settings.BASE_DIR + '/static/test.less') as f:
+            wtext = f.read()
 
-    #write
-    if wtext:
-        with open(filename, 'wb') as f:
+        wtext =  wtext %(background, border, font, font_color)
+
+        with open(settings.BASE_DIR + '/static/test.less', 'wb') as f:
             f.write(wtext)
+
+        os.system('lessc static/test.less > static/test_out.css')
+
 
 def customize_page_style(request):
     border = request.GET.get('border-color')
@@ -38,6 +37,7 @@ def customize_page_style(request):
     title_color = request.GET.get('title-color')
     des_color = request.GET.get('des-color')
     font = request.GET.get('font')
+    print request.GET
 
     print border, font_color, background, highlight,title_color, des_color, font
 

@@ -27,7 +27,8 @@
     <body>
 
         <div class="container">
-            <form action='/s/'>
+            <form action='/s/' method="GET">
+            {% csrf_token %}
             <label>Border Color:</label>
             <input type="text" value="222" name="border-color" class="pick-a-color form-control">
             <label>Font Color:</label>
