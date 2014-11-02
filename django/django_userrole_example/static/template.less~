@@ -1,0 +1,13 @@
+.foo{
+ 
+	background-color:#%s;
+	border:1px solid #%s;
+ 	font-family: %s;
+	
+ 
+	h2{
+		color:#%s;
+ 
+		
+	}
+}

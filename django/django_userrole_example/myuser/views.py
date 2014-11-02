@@ -18,7 +18,7 @@ def generate_css_file(border, font_color, background, highlight,\
     #generate css file for the given params
     wtext = ''
     if font_color or background or title_color:
-        with open(settings.BASE_DIR + '/static/test.less') as f:
+        with open(settings.BASE_DIR + '/static/template.less') as f:
             wtext = f.read()
 
         wtext =  wtext %(background, border, font, font_color)
@@ -37,7 +37,6 @@ def customize_page_style(request):
     title_color = request.GET.get('title-color')
     des_color = request.GET.get('des-color')
     font = request.GET.get('font')
-    print request.GET
 
     print border, font_color, background, highlight,title_color, des_color, font
 
