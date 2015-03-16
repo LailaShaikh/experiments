@@ -1,0 +1,6 @@
+-module(macro_example).
+-export([new_fun/4, blend/2]).
+
+
+new_fun()->0.
+blend()->0.
