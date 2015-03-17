@@ -1,0 +1,6 @@
+-module(map).
+-export([new/4]).
+
+
+new(R, G, B, A) ->
+       io:format("~-15w~-15w~-15w~n",[R, G, B, A]).
