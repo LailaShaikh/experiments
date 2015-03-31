@@ -1,0 +1,7 @@
+-module(index_of_list).
+-export([find_index/2]).
+
+find_index(0, [X|_]) ->
+	      X;
+find_index(N, [_|X]) when N > 0 ->
+	      find_index(N-1, X).
