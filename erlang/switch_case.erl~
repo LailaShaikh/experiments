@@ -1,0 +1,13 @@
+-module(switch_case).
+-compile(export_all).
+
+function(Operation, Values) ->
+		    case Operation of
+		    	 null ->
+			      null;
+			 multiple ->
+			 	  case Values of
+				       [A, B] when integer(A), integer(B) ->
+				       	   {ok, A*B};
+				end
+		end.
