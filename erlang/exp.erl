@@ -25,6 +25,17 @@ base(A) ->
     F = fun() -> C = A * B,C end,
     F().
 
+%%Password find
+
+password() ->
+	   Name = "myUbuntu",
+	   fun() ->
+	   	 Name
+    		 end
+		 .
+find_password(F) ->
+		 "The password of your system is "++F().
+
 
 %AlarmFunction = fun(Where) ->
 %	       		  io:format("Alarm is raised at ~s.~n",[Where]),
