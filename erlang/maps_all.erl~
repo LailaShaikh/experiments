@@ -1,6 +1,0 @@
--module(maps_all).
--export([test_my_map/2]).
-
-test_my_map(K, V) ->
-	       io:fwrite('~w ~w ~n done.',[K, V]).
-
