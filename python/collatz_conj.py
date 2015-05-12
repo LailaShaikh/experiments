@@ -13,19 +13,25 @@ Soln steps:
 def find_collatz_cycle_len(elem):
     #Assumptions:
     # TODO: The cycle count will not proceed for negative numbers and 1
-    elem_cycle_len = 1
-    while elem > 1:
-        if elem % 2 == 0:
-            elem /= 2
-        else:
-            elem = (3 * elem) + 1
-        elem_cycle_len += 1
-    return elem_cycle_len
+    stack = []
+    def transition(e):
+        while e > 1:
+            if e % 2 == 0:
+                e /= 2
+            else:
+                e = (3 * e) + 1
+            yield e
+    
+    for i in transition(elem):
+        stack.append(i)
+    return len(stack) + 1 #including the last transition to 1
 
 def start_work():
     #1.Get input
     il = raw_input("Enter the integers and space as delimiter like --> 1 2 3 4: ")
     il = [int(i) for i in il.split(' ') if i != ' ']
+    
+    #max seq result
     print max(map(find_collatz_cycle_len, il))
    
 
