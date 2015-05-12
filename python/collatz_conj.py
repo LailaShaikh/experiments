@@ -12,8 +12,9 @@ Soln steps:
 
 def find_collatz_cycle_len(elem):
     #Assumptions:
-    # TODO: The cycle count will not proceed for negative numbers and 1
+    # TODO: The cycle count will not proceed for negative numbers and number 1
     stack = []
+    #count  = 1
     def transition(e):
         while e > 1:
             if e % 2 == 0:
@@ -23,8 +24,10 @@ def find_collatz_cycle_len(elem):
             yield e
     
     for i in transition(elem):
+        #count += 1
         stack.append(i)
     return len(stack) + 1 #including the last transition to 1
+    #return count
 
 def start_work():
     #1.Get input
