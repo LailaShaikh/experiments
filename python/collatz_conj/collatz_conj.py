@@ -12,8 +12,39 @@ Soln steps:
 from gevent import socket
 from gevent.server import StreamServer
 
+import socket
+import sys
+
+sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+def BaseServer():
+    
+    server_address = ('localhost', 6000)
+    print >>sys.stderr, 'starting up on %s port %s' % server_address
+    sock.bind(server_address)
+    sock.listen(1)
+    while True:
+        # Wait for a connection
+        print 'waiting for a connection'
+        connection, client_address = sock.accept()
+        line = connection.recv(1024)
+
+        if line == 'quit':
+            break
+       
+        if len(line.strip()): 
+            il = [int(i) for i in line.strip().split(',') if i != ' ']
+            print il
+            #max seq result
+            res = max(map(find_collatz_cycle_len, il))
+            print "The maximum cycle length is : %s" %res
+            connection.sendall("The maximum cycle length is : %s" %res)
+
+
 def echo(socket, address):
     print('New connection from %s:%s' % address)
+    #socket.listen(1)
+    socket.accept()
     while True:
         line  = socket.recv(1024)
         if line == 'quit':
@@ -62,10 +93,17 @@ def start_work():
 
 
 def start_server():
-    server = StreamServer(('0.0.0.0', 6000), echo)
-    print('Starting echo server on port 6000')
-    server.serve_forever()
-   
+    #sock = socket.socket()
+    #sock.bind(('0.0.0.0', 6000))
+    #sock.listen(256)
+    #server = StreamServer(
+    #    sock, echo)
+    #server.serve_forever()
+    #server = StreamServer(('localhost', 6000), echo, backlog=1000)
+    #print('Starting echo server on port 6000')
+    #server.serve_forever()
+    BaseServer()
+
 
 if __name__ == '__main__':
     start_server()
