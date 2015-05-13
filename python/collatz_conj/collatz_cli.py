@@ -14,9 +14,17 @@ try:
     # Send data
     il = raw_input("Enter the integers and comma as delimiter like --> 1,2,3,4: ")
     print >>sys.stderr, 'sending "%s"' % il
-    sock.sendall(il)
-    data = sock.recv(1024)
-    print >>sys.stderr, 'received "%s"' % data
+    sock.send(il)
+    expect_msg = len('The maximum cycle length is :  for  ')
+    data = ''
+    res = ''
+    while '\n' not in data:
+        data = sock.recv(16)
+        res += data
+    
+    print "***" * 5
+    print res
+    print "***" * 5
 
 finally:
     print >>sys.stderr, 'closing socket'

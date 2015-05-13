@@ -11,11 +11,38 @@ Soln steps:
 
 from gevent import socket
 from gevent.server import StreamServer
+from gevent.pool import Pool
 
 import socket
 import sys
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+
+import gevent
+from gevent.server import StreamServer
+
+from socketpool import ConnectionPool, TcpConnector
+
+
+def pool_handler(sock, address):
+    print ('New connection from %s:%s' % address)
+
+    while True:
+        line = sock.recv(1024)
+        if not line:
+            break
+        if len(line.strip()): 
+            il = [int(i) for i in line.strip().split(',') if i != ' ']
+            print il
+            #max seq result
+            res = map(find_collatz_cycle_len, il)
+            iv = il[res.index(max(res))]
+            print "The maximum cycle length is : %s" %res
+            sock.send("The maximum cycle length is : %s - %s \n" %(max(res),iv))
+      
+
+
 
 def BaseServer():
     
@@ -40,24 +67,6 @@ def BaseServer():
             print "The maximum cycle length is : %s" %res
             connection.sendall("The maximum cycle length is : %s" %res)
 
-
-def echo(socket, address):
-    print('New connection from %s:%s' % address)
-    #socket.listen(1)
-    socket.accept()
-    while True:
-        line  = socket.recv(1024)
-        if line == 'quit':
-            break
-       
-        if len(line.strip()): 
-            il = [int(i) for i in line.strip().split(',') if i != ' ']
-            print il
-            #max seq result
-            res = max(map(find_collatz_cycle_len, il))
-            print "The maximum cycle length is : %s" %res
-            socket.sendall("The maximum cycle length is : %s" %res)
-        
 
 def find_collatz_cycle_len(elem):
     #Assumptions:
@@ -93,17 +102,11 @@ def start_work():
 
 
 def start_server():
-    #sock = socket.socket()
-    #sock.bind(('0.0.0.0', 6000))
-    #sock.listen(256)
-    #server = StreamServer(
-    #    sock, echo)
-    #server.serve_forever()
-    #server = StreamServer(('localhost', 6000), echo, backlog=1000)
-    #print('Starting echo server on port 6000')
-    #server.serve_forever()
-    BaseServer()
-
+    pool = Pool(10000)
+    server = StreamServer(('localhost', 6000), pool_handler, backlog=1000, spawn=pool)
+    print('Starting echo server on port 6000')
+    server.serve_forever()
+   
 
 if __name__ == '__main__':
     start_server()
