@@ -9,7 +9,7 @@ def index():
     return "Testing"
 
 
-@app.route('/get/movies', methods=['GET'])
+@app.route('/rating/', methods=['GET'])
 def get_movies():
     print "movies"
     return jsonify(movies_ratings)
