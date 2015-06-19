@@ -1,0 +1,14 @@
+<html>
+  <head>
+    <title>Sample Mongo - Elastic Search App</title>
+  </head>
+  <body>
+    <div>
+      <h1></h1>Search in Mongo...
+      <form method="get">
+	<input type="text" name="search" placeholder="Type some name..">
+	<input type="submit" name="ss" value="submit">
+      </form>
+    </div>
+  </body>
+</html>
