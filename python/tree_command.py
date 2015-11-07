@@ -1,4 +1,5 @@
 import os
+import sys
 
 '''
 |-f1
@@ -47,8 +48,9 @@ def tree(top_path):
 
 
 if __name__ == '__main__':
-    #tree('/home/navaneethan/workspace/hirenew')
-    tree('/home/navaneethan/workspace/autosourcing_engine/tests')
+    root_path = sys.argv[1]
+    print root_path
+    tree(root_path)
 
 
 # Output
