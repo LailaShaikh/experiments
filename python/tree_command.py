@@ -24,27 +24,27 @@ def get_files_only(path):
             if os.path.isfile(os.path.join(path, d))]
 
 
-def print_line(files):
+def print_line(files, level=1):
     for _f in files:
-        print "\t |---- %s" %_f
+        print "\t" * level, "|---- %s" %_f
 
 
 def start_from_dir(_path, level=1):
     #print "\t o" * level
-
-    print "\n %s" % _path
+    print "\n", "\t" * level, _path
     _files = get_files_only(_path)
-    print_line(_files)
+    print_line(_files, level)
 
 
 def tree(top_path):
-    start_from_dir(top_path, level=1)
-    _dirs = get_dirs_list(top_path)
+    start_from_dir(top_path, level=0)
+    _dirs = [(1, i) for i in get_dirs_list(top_path) if i]
     while _dirs:
-        curr_dir = _dirs.pop()
-        start_from_dir(curr_dir, level=2)
+        level, curr_dir = _dirs.pop()
+        start_from_dir(curr_dir, level)
         
-        _dirs.extend(get_dirs_list(curr_dir))
+        
+        _dirs.extend([(level + 1, i) for i in get_dirs_list(curr_dir) if i])
 
 
 if __name__ == '__main__':
