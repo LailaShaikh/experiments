@@ -13,6 +13,7 @@ import sys
 def tail(fn):
     def check_new_line(fp):
         fp.seek(0, 2)
+        # This is optional and defaults to 0 which means absolute file positioning, other values are 1 which means seek relative to the current position and 2 means seek relative to the file's end.
         while True:
             curr_line = fp.readline()
             if curr_line:
