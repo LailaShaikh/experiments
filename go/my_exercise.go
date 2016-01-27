@@ -6,6 +6,12 @@ import (
 	"sort"
 )
 
+type Mapian struct {
+	Name string
+	Friends map[string]*Mapian
+}
+
+
 func add(b int, a int) int {
 	return a + b
 }
@@ -20,6 +26,9 @@ func MapExercise(){
 	for k,v := range mymap {
 		fmt.Println(k,v)
 	}
+	mapian := &Mapian{ Name: "Gokul", Friends: make(map[string]*Mapian) }
+	mapian.Friends["Test"] = &Mapian{Name: "Anand"}
+	fmt.Println(mapian.Friends["Test"])
 }
 
 func arrTest(){
@@ -40,7 +49,7 @@ func arrTest(){
 
 	dest := make([]int, 20)
 	copy(dest, ta)
-	fmt.Println("Dest:=",dest, ta)
+	fmt.Println("Dest:=",dest, len(ta))
 
 	MapExercise()
 }
