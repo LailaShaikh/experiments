@@ -19,6 +19,14 @@ func calcTotal(nums ...int) int {
 	return total
 }
 
+//closures
+func closExam(i int) func() int {
+	return func() int {
+		i += 1
+		return i
+	}
+}
+
 func main(){
 	s1 := person{name:"Nava", age:20}
 	s1.name = "python"
@@ -26,4 +34,10 @@ func main(){
 
 	fmt.Println(calcTotal(1,2,3,4))
 	fmt.Println(calcTotal([]int{1,2,3,4}...))
+
+	clf := closExam(1)
+	fmt.Println(clf())
+	fmt.Println(clf())
+	fmt.Println(clf())
+	fmt.Println(clf())
 }
