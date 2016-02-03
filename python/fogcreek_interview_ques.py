@@ -9,12 +9,10 @@ abcdefghijklmnopqrstuvwxyz_
 
 by the number of times the character appears in the following text (descending):
 
-
-
 Now take the sorted string, and drop all the characters after (and including) the _. The remaining word is the answer.
 
-
 refer: http://www.fogcreek.com/Jobs/SupportEngineer/
+
 """
 
 
